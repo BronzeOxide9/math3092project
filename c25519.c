@@ -121,9 +121,11 @@ void scalarmult_base(u8 *out, const u8 *scalar);
 void generate_keypair(u8 *pk, u8 *sk);
 void x25519(u8 *out, const u8 *pk, const u8 *sk);
 
-static const field_elem _121665 = {0xDB41, 1}; // 0xDB41 = 121665, this is (A - 2)/4, where A is the Montgomery parameter 486662
-// This is due to some optimisation in the Montgomery ladder step as described in Bernstein's paper 
-// https://cr.yp.to/ecdh/curve25519-20060209.pdf
+static const field_elem _121665 = {0xDB41, 1}; 
+
+/* 0xDB41 = 121665, this is (A - 2)/4, where A is the Montgomery parameter 486662
+This is due to some optimisation in the Montgomery ladder step as described in 
+Bernstein's paper: https://cr.yp.to/ecdh/curve25519-20060209.pdf /*
 
 /* Performs Montgomery Curve Arithmetic using Montgomery Ladder */
 void scalarmult(u8 *out, const u8 *scalar, const u8 *point) {
