@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy as sp
 import secrets
-import atmos
 
 def calculate_entropy(byte_data):
     if isinstance(byte_data, bytes):
@@ -17,7 +16,6 @@ sample_size = 1000
 entropy_secrets = []
 entropy_numpy_unbiased = []
 entropy_numpy_biased = []
-entropy_atmos = []
 
 for i in range(num_samples):
     
@@ -31,17 +29,13 @@ for i in range(num_samples):
                               np.random.randint(0, 256, size=(sample_size - sample_size//2))))
     entropy_numpy_biased.append(calculate_entropy(numpy_bytes_biased))
     
-    atmos_bytes = atmos.gen_bytes(sample_size)
-    entropy_atmos.append(calculate_entropy(atmos_bytes))
-
 plt.figure(figsize=(16, 8))
 plt.plot(entropy_secrets, label='Secrets Module', color='blue')
 plt.plot(entropy_numpy_unbiased, label='Numpy PRNG Unbiased', color='green')
 plt.plot(entropy_numpy_biased, label='Numpy PRNG Biased', color='red')
-plt.plot(entropy_atmos, label='Atmos PRNG', color='purple')
 plt.ylabel('Entropy (bits)')
 plt.xlabel('Sample Number')
-plt.title('Entropy Comparison: Atmos-rng vs. Secrets vs. Numpy PRNG (Unbiased/Biased)')
+plt.title('Entropy Comparison: Secrets vs. Numpy PRNG (Unbiased/Biased)')
 plt.legend()
 plt.ylim(7.45, 7.9) 
 plt.show()
