@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <LiquidCrystal.h>
+#include <time.h>
 
 typedef uint8_t u8;
 typedef int64_t i64;
@@ -174,8 +175,13 @@ void x25519(u8 *out, const u8 *pk, const u8 *sk) {
 }
 
 void randombytes(u8 *buffer, i64 size) {
+    static bool seeded = false;
+    if (!seeded) {
+        randomSeed(analogRead(A0));  
+        seeded = true;
+    }
     for (i64 i = 0; i < size; ++i) {
-        buffer[i] = random(0, 256); // Generate a random byte between 0 and 255
+        buffer[i] = random(0, 256);  
     }
 }
 
