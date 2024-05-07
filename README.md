@@ -1,4 +1,4 @@
-# math3092project
+# MATH3092 Project Code Repository
 
 # Introduction
 
