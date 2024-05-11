@@ -21,7 +21,7 @@ libcurve25519.generate_keypair(B_public, B_private)
 A_public_bytes = ser.read(32)
 A_public = to_ctypes_array(A_public_bytes)
 
-ser.write(bytes(A_public))
+ser.write(bytes(B_public))
 
 shared_secret = (ctypes.c_ubyte * 32)()
 libcurve25519.x25519(shared_secret, A_public, B_private)
