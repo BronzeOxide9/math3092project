@@ -246,7 +246,7 @@ void scrollText(char* text, int length) { // scrolls text across LCD display
   int startPosition = 0;
   int displayWidth = 16; 
 
-
+  while (true) {
   lcd.setCursor(0, 0); // sets cursor to row 1
   lcd.write("The key is:");
   lcd.setCursor(0, 1); // sets cursor to row 2
@@ -265,7 +265,7 @@ void scrollText(char* text, int length) { // scrolls text across LCD display
     startPosition = 0; // Reset to loop the scrolling
     delay(1000); // Wait 1s
   }
-  
+  }
 }
 
 void loop() {
