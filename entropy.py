@@ -10,7 +10,7 @@ def calculate_entropy(byte_data):
     probabilities = counts / counts.sum()
     return sp.stats.entropy(probabilities, base=2) 
 
-num_samples = 1
+num_samples = 1000
 sample_size = 1000
 
 entropy_secrets = []
